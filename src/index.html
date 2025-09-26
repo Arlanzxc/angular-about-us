@@ -2,12 +2,83 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>MyApp</title>
+  <title>About us</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <app-root></app-root>
+  <div id="header">
+    <div class="container">
+      <nav>
+        <img src="assets/logo.png" class="logo">
+        <ul>
+          <li><a href="#">Home</a></li>                    
+          <li><a href="#">About</a></li>
+        </ul>
+      </nav>
+      <div class="header-text">
+        <p>Student of KBTU</p>
+        <h1>Hi, I'm Arlan Maximov</h1>
+      </div>
+    </div>
+  </div>
+
+
+<div id="about">
+  <div class="container">
+    <div class="row">
+      <div class="about-col-1">
+        <img src="assets/user.png">
+      </div>
+      <div class="about-col-2">
+        <h1 class="sub-title">About Me</h1>
+        <p>Text</p>
+
+        <div class="tab-titles">
+          <p class="tab-links active-link" onclick="opentab('hobbies')">Hobbies</p>
+          <p class="tab-links" onclick="opentab('education')">Education</p>
+          <p class="tab-links" onclick="opentab('goals')">Goals</p>
+        </div>
+        <div class="tab-contents active-tab" id="hobbies">
+          <ul>
+            <li><span>Chess</span></li>
+            <li><span>Billiard</span></li>
+            <li><span>Ping Pong</span></li>
+          </ul>
+        </div>
+        <div class="tab-contents" id="education">
+          <ul>
+            <li><span>KBTU</span><br>Information of system</li>
+          </ul>
+        </div>
+        <div class="tab-contents" id="goals">
+          <ul>
+            <li><span>Senior Web-Developer</span></li>
+            <li><span>Pass JS framework. Angular</span></li>
+            <li><span>Return scholarship</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+      var tablinks = document.getElementsByClassName("tab-links");
+      var tabcontents = document.getElementsByClassName("tab-contents");  
+      function opentab(tabname){
+          for(tablink of tablinks){
+            tablink.classList.remove("active-link")
+          }
+          for(tabcontent of tabcontents){
+            tabcontent.classList.remove("active-tab")
+          }
+          event.currentTarget.classList.add("active-link");
+          document.getElementById(tabname)
+          .classList.add("active-tab")
+          
+ }
+</script>
 </body>
 </html>

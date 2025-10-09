@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
+import { PokemonList } from './pokemon-list/pokemon-list';
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule],
+  imports: [FormsModule, PokemonList],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

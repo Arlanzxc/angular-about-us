@@ -1,0 +1,14 @@
+<button (click)="loadPokemons()">Load Pokemons</button>
+
+@if (loading) {
+  <p>Loading Pokemon...</p>
+} 
+@else {
+  <ul>
+    @for (p of pokemons; track p.name) {
+      <li>{{ p.name }}</li>
+    }
+  </ul>
+}
+
+

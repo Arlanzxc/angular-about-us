@@ -1,26 +1,26 @@
-import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, inject } from '@angular/core';
 import { Pokemon } from '../pokemon';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-pokemon-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './pokemon-list.html',
-  styleUrl: './pokemon-list.css'
+  styleUrls: ['./pokemon-list.css']
 })
-export class PokemonList {
+export class PokemonListComponent implements OnInit {
   pokemonService = inject(Pokemon);
 
-  get pokemons() {
-    return this.pokemonService.pokemons();
+  pokemons$ = this.pokemonService.pokemons$;
+  loading$ = this.pokemonService.loading$;
+
+  ngOnInit() {
+    this.pokemonService.setSearchTerm('');
   }
 
-  get loading() {
-    return this.pokemonService.loading();
-  }
-
-  loadPokemons() {
-    this.pokemonService.fetchPokemons();
+  onSearch(term: string) {
+    this.pokemonService.setSearchTerm(term);
   }
 }

@@ -1,14 +1,23 @@
-<button (click)="loadPokemons()">Load Pokemons</button>
+<input
+  type="text"
+  placeholder="Search Pokémon..."
+  (input)="onSearch($event.target.value)"
+  class="search-box"
+/>
+
+@let loading = loading$ | async;
+@let pokemons = pokemons$ | async;
 
 @if (loading) {
-  <p>Loading Pokemon...</p>
-} 
-@else {
-  <ul>
-    @for (p of pokemons; track p.name) {
-      <li>{{ p.name }}</li>
-    }
-  </ul>
+  <p>Loading...</p>
+} @else {
+  @if (pokemons?.length) {
+    <ul>
+      @for (pokemon of pokemons; track pokemon.name) {
+        <li>{{ pokemon.name }}</li>
+      }
+    </ul>
+  } @else {
+    <p>No Pokémon found </p>
+  }
 }
-
-
